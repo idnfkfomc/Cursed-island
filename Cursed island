@@ -1,0 +1,27 @@
+-- https://t.me/arceusxscripts --
+ 
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+ 
+local Players = game:GetService('Players');
+local LocalPlayer = Players.LocalPlayer
+ 
+LocalPlayer.Idled:Connect(function()
+    local VirtualUser = game:GetService('VirtualUser')
+    VirtualUser:CaptureController()
+    VirtualUser:ClickButton2(Vector2.new())
+end)
+ 
+while task.wait() do
+    repeat task.wait() until (LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()):FindFirstChild('HumanoidRootPart')
+    if LocalPlayer.Character.HumanoidRootPart.CFrame ~= CFrame.new(0, 300, 0) then
+        LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 300, 0)
+    end
+    if LocalPlayer.Character.HumanoidRootPart.Anchored == false then
+        LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    end
+ 
+end
+ 
+-- https://t.me/arceusxscripts --
